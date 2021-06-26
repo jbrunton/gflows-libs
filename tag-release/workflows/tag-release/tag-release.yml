@@ -21,15 +21,17 @@ jobs:
           LATEST_RELEASE=$(hub release | grep -E '^[0-9]+.[0-9]+.[0-9]+$' | sort -r | head -n 1)
           echo "latest release: $LATEST_RELEASE"
           echo "LATEST_RELEASE=$LATEST_RELEASE" >> $GITHUB_ENV
+          
       - name: update major tag
         if: env.THIS_RELEASE == env.LATEST_RELEASE
+        #@yaml/text-templated-strings
         run: |
           MAJOR_VERSION=$(echo $THIS_RELEASE | grep -Eo '^[0-9]+')
           MAJOR_TAG="v$MAJOR_VERSION"
           echo "this release ($THIS_RELEASE) is the latest, updating major tag $MAJOR_TAG"
           
-          git config --global user.email "jbrunton-ci-minion@outlook.com"
-          git config --global user.name "jbrunton-ci-minion"
+          git config --global user.email "(@= data.values.git.user.email @)"
+          git config --global user.name "(@= data.values.git.user.name @)"
           git tag -fa $MAJOR_TAG -m "Update $MAJOR_TAG tag for release $THIS_RELEASE"
           git push origin $MAJOR_TAG --force
       
