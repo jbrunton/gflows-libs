@@ -1,0 +1,8 @@
+{
+  "name": "ex-multi-workflows",
+  "files": [
+    "libs/values.yml",
+    "workflows/foo/foo.yml",
+    "workflows/bar/bar.yml"
+  ]
+}

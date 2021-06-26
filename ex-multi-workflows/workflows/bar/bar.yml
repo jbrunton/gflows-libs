@@ -1,0 +1,16 @@
+#@ load("@ytt:data", "data")
+
+name: bar
+
+"on":
+  push:
+    
+jobs:
+  
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      #@yaml/text-templated-strings
+      - run: echo (@= data.values.multi-workflows.greeting @)
+  
