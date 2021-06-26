@@ -12,5 +12,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       #@yaml/text-templated-strings
-      - run: echo (@= data.values.multi-workflows.greeting @)
+      - run: echo (@= data.values.multi_workflows.greeting @)
   
