@@ -1,0 +1,6 @@
+{
+  "name": "tag-release",
+  "files": [
+    "workflows/tag-release/tag-release.yml"
+  ]
+}
